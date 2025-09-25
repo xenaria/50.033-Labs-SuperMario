@@ -22,7 +22,7 @@ GameOverScreen is initially set as disabled.
 
 The checkoff implementation can be seen in `PlayerMovement.cs`. We added a new `GameObject` variable called `gameOverScreen` which points to the canvas hidden canvas we created, and also a new 'TextMeshProGUI` called 'finalScore', also pointing to the finalScore inside the hidden canvas.
 
-We created a new method called `ShowGameOverScreen()` which activates the hidden canvas layer. We also set the finalScoreText as the current score counted before time stopped. It’s better to use the score itself (the number) because that’s the real game data. This is better than reusing the scoreText we has made initially, since we prevent mixing game logic with UI, which can cause bugs and make it harder to use the score in calculations later.
+We created a new method called `ShowGameOverScreen()` which activates the hidden canvas layer. We also set the finalScoreText as the current score counted before time froze. It’s better to use the score itself (the number) because that’s the real game data. This is better than reusing the scoreText we has made initially, since we prevent mixing game logic with UI, which can cause bugs and make it harder to use the score in calculations later.
 
 ```ruby
 public void ShowGameOverScreen()
