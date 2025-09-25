@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Collided with goomba!");
+
             Time.timeScale = 0.0f;
             ShowGameOverScreen();
         }
@@ -97,7 +97,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void RestartButtonCallback(int input)
     {
-        Debug.Log("Restart!");
         // reset everything
         ResetGame();
         // resume time
