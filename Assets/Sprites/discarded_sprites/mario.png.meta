@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f1bde3f95d8d049e59a4208ea4358c51
+guid: 6ac6ebd59e351cb49927a5d1aa728107
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,10 +45,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,95 +126,7 @@ TextureImporter:
       name: mario_stand_left
       rect:
         serializedVersion: 2
-        x: 181
-        y: 172
-        width: 13
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c85818d8bff92043a1164cca6de0faf
-      internalID: -413885677
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mario_stand_right
-      rect:
-        serializedVersion: 2
-        x: 211
-        y: 172
-        width: 13
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1f5245e229611e049859a1c25cc52d99
-      internalID: -1287831129
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mario jump left
-      rect:
-        serializedVersion: 2
-        x: 29
-        y: 172
-        width: 17
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 01da9681a7331154ab16f761656ee37a
-      internalID: 440521582
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mario avoid left
-      rect:
-        serializedVersion: 2
-        x: 60
-        y: 172
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 34c5379e807115c4aa598982bd7ba917
-      internalID: -1131703506
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mario walk left
-      rect:
-        serializedVersion: 2
-        x: 89
+        x: 179
         y: 172
         width: 16
         height: 16
@@ -226,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31519b2f70efb6b4d837e2ff377fa175
-      internalID: 1733370858
+      spriteID: 71cfb959afd452e40bece4c790f85377
+      internalID: -644258368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mario left 1
+      name: mario_stand_right
       rect:
         serializedVersion: 2
-        x: 121
-        y: 172
-        width: 12
-        height: 16
+        x: 210
+        y: 171
+        width: 15
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,30 +160,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10459c85ca8d87d41a7bb1f492f2484c
-      internalID: -860383435
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mario left 2
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 173
-        width: 14
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3ec2be5b38cedfd448e785173fc71cd4
-      internalID: 532879491
+      spriteID: 873fba9c0cecfaf438961d0ec12d4166
+      internalID: -1597492061
       vertices: []
       indices: 
       edges: []
@@ -290,13 +180,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mario avoid left: -1131703506
-      mario jump left: 440521582
-      mario left 1: -860383435
-      mario left 2: 532879491
-      mario walk left: 1733370858
-      mario_stand_left: -413885677
-      mario_stand_right: -1287831129
+      mario_stand_left: -644258368
+      mario_stand_right: -1597492061
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

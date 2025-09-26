@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 82bc45c4496284f4c823d1b837f65ec4
+guid: bead712ba3b3297488a624d31bafcb35
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ground Brown
+      name: ground_brown
       rect:
         serializedVersion: 2
         x: 373
@@ -138,14 +138,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96e23dd5382ad9b47aa176a335948760
-      internalID: 218227318
+      spriteID: e9509b8962d720743b45e9efac826174
+      internalID: 2127841725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: small hill
+      name: small_hill
       rect:
         serializedVersion: 2
         x: 48
@@ -153,21 +153,21 @@ TextureImporter:
         width: 48
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0953f9a8c388cb340bd1d700f9700cce
-      internalID: 2026803651
+      spriteID: 341a1e5e3f5f49945b972ed63466afd5
+      internalID: 552527166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: big hill
+      name: big_hill
       rect:
         serializedVersion: 2
         x: 99
@@ -175,81 +175,37 @@ TextureImporter:
         width: 80
         height: 35
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac501f00ca7882c4c842e86878e5fb22
-      internalID: -969221547
+      spriteID: 6c9f96a2260eddf4fb4c6e2abf8ac5f0
+      internalID: -991427172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2-cloud
+      name: 3-shrubs
       rect:
         serializedVersion: 2
-        x: 46
-        y: 1030
-        width: 48
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f63b886a4738274d941ef504dd96767
-      internalID: 557605678
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 3-cloud
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 1030
+        x: 85
+        y: 983
         width: 64
-        height: 24
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66a0d88f608106844b1e5297229eb642
-      internalID: 651085742
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1-cloud
-      rect:
-        serializedVersion: 2
-        x: 162
-        y: 1030
-        width: 32
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0adec3ce731b3a84eaf64d0ff84a2e32
-      internalID: 2128181070
+      spriteID: 5c9134bce6938da43b3ec945d6dee3f4
+      internalID: -1588962371
       vertices: []
       indices: 
       edges: []
@@ -263,65 +219,21 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcd3f2a34dabd98458a114cf4bd70478
-      internalID: 1011245606
+      spriteID: 5bcfc949b764936478353b58dfff2c6a
+      internalID: -1550242180
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3-shrub
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 983
-        width: 64
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d414bcb764e2a046bc3d0447701bcc9
-      internalID: -2036721639
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2-shrub
-      rect:
-        serializedVersion: 2
-        x: 151
-        y: 983
-        width: 48
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 939634d02fdffab43a6f7d64869efb4d
-      internalID: -510720128
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pipe head
+      name: pipe_head
       rect:
         serializedVersion: 2
         x: 614
@@ -329,21 +241,21 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6a58fd39190ccc44bec9f76e5d50ee7
-      internalID: 1743693775
+      spriteID: e701365887beea449ae784224eaf2d12
+      internalID: 1560140295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pipe body
+      name: pipe_body
       rect:
         serializedVersion: 2
         x: 616
@@ -351,43 +263,87 @@ TextureImporter:
         width: 28
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5211f8ecae2ef1c43ab76d1df653f9e2
-      internalID: 1211969875
+      spriteID: 7de115bdf54853543861f60b822cf47a
+      internalID: -555563181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pipe end
+      name: goomba_left
       rect:
         serializedVersion: 2
-        x: 614
-        y: 1081
-        width: 32
-        height: 32
+        x: 187
+        y: 342
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55cc98245d94e6043a012bf38e676732
-      internalID: 1249605827
+      spriteID: 508b6a4a3b487184c83f9d7addc37ec1
+      internalID: 680510547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: brick
+      name: goomba_right
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 342
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e22efc6c7ac78e49b693793b02e9551
+      internalID: 2029781504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goomba_squish
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 343
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4d5f977871c42348babab17ce738ca8
+      internalID: 1703028398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brick_brown
       rect:
         serializedVersion: 2
         x: 373
@@ -395,21 +351,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e51a607313656ad45accb7389a7ec75d
-      internalID: -2063205505
+      spriteID: f17573d3fc93ea5419d9753fdda8caf7
+      internalID: -929561148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: question blocks
+      name: question_block_lightbrown
       rect:
         serializedVersion: 2
         x: 372
@@ -417,15 +373,125 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 152aa977c4b7641499ba59e0df5da8dc
-      internalID: 1117523529
+      spriteID: 8b7333f6d312526408e50be488d10013
+      internalID: -1443697755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2-shrubs
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 983
+        width: 48
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0d1efe0bcd58644dae4fe928f826eb2
+      internalID: 1246491897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1-cloud
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 1030
+        width: 33
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f890d96308b94242b763e331fd2c268
+      internalID: -1130152534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 3-clouds
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1030
+        width: 64
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03853f6176b38414590673227d2638df
+      internalID: -1475147023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2-clouds
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 1030
+        width: 48
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b8c928e6d4603543b3042bc30ce7356
+      internalID: 1482203631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magic_mushroom
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1193
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cb55a7dda5a3c94eb803f3d4eeeef87
+      internalID: -1621870430
       vertices: []
       indices: 
       edges: []
@@ -439,235 +505,15 @@ TextureImporter:
         width: 8
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35702c6332a14f24b87f854e58c4c4db
-      internalID: -1066314554
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: magic mushroom
-      rect:
-        serializedVersion: 2
-        x: 71
-        y: 1193
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 880d78cb7c9e9d84ca4bda4ef2459249
-      internalID: 1338267052
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goomba 1
-      rect:
-        serializedVersion: 2
-        x: 187
-        y: 342
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 799c8889e08fd3c40998972aae5d5d3c
-      internalID: 593861463
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goomba 2
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 342
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d5c745e708d65a4dad3258627f188be
-      internalID: 1048242177
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: goomba flattened
-      rect:
-        serializedVersion: 2
-        x: 228
-        y: 343
-        width: 16
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 08f70229f5a1efe409f9b0a26ecce7c8
-      internalID: -1879550463
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mario dead
-      rect:
-        serializedVersion: 2
-        x: 45
-        y: 729
-        width: 15
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9c097b62552525a4ab3afdc6e7c51297
-      internalID: 190499180
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mario 2
-      rect:
-        serializedVersion: 2
-        x: 67
-        y: 728
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a50c2ba3127c4c840842519d4b3c98de
-      internalID: -1329957089
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mario 3
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 729
-        width: 12
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d74e51f92f090a46abc4883d4bd064c
-      internalID: -384519295
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mario 4
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 729
-        width: 14
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4da262c44f635db4b82b902395f60dba
-      internalID: 822646374
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mario run right
-      rect:
-        serializedVersion: 2
-        x: 117
-        y: 729
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: acaead444c4840543b80909e4dacb03d
-      internalID: 2085546253
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mario jump
-      rect:
-        serializedVersion: 2
-        x: 139
-        y: 729
-        width: 17
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 86619bdd05b5bb94c8a8d7e27bf91fa3
-      internalID: -128863853
+      spriteID: 3eed6805f5ade5a409dc8e17a27e2aec
+      internalID: 1651756002
       vertices: []
       indices: 
       edges: []
@@ -686,31 +532,24 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1-cloud: 2128181070
-      1-shrub: 1011245606
-      2-cloud: 557605678
-      2-shrub: -510720128
-      3-cloud: 651085742
-      3-shrub: -2036721639
-      Ground Brown: 218227318
-      big hill: -969221547
-      brick: -2063205505
-      coin: -1066314554
-      goomba 1: 593861463
-      goomba 2: 1048242177
-      goomba flattened: -1879550463
-      magic mushroom: 1338267052
-      mario 2: -1329957089
-      mario 3: -384519295
-      mario 4: 822646374
-      mario dead: 190499180
-      mario jump: -128863853
-      mario run right: 2085546253
-      pipe body: 1211969875
-      pipe end: 1249605827
-      pipe head: 1743693775
-      question blocks: 1117523529
-      small hill: 2026803651
+      1-cloud: -1130152534
+      1-shrub: -1550242180
+      2-clouds: 1482203631
+      2-shrubs: 1246491897
+      3-clouds: -1475147023
+      3-shrubs: -1588962371
+      big_hill: -991427172
+      brick_brown: -929561148
+      coin: 1651756002
+      goomba_left: 680510547
+      goomba_right: 2029781504
+      goomba_squish: 1703028398
+      ground_brown: 2127841725
+      magic_mushroom: -1621870430
+      pipe_body: -555563181
+      pipe_head: 1560140295
+      question_block_lightbrown: -1443697755
+      small_hill: 552527166
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
