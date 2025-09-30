@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private bool jumpInput;
     public AudioClip marioDeath;
     public float deathImpulse = 15;
-
+    int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
     // state
     [System.NonSerialized]
     public bool alive = true;
@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         // this checks if mario is on the ground
-        if (col.gameObject.CompareTag("Ground") && !onGroundState)
+        if (((collisionLayerMask &(1 << col.transform.gameObject.layer)) > 0 ) && !onGroundState)
         {
             onGroundState = true;
             //update animator state
