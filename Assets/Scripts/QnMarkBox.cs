@@ -14,7 +14,7 @@ public class QuestionBox : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip coinSound;
-    [SerializeField] private AudioClip emptyBoxSound;
+    //[SerializeField] private AudioClip emptyBoxSound;
 
     private bool isEmpty = false;
     private int coinsLeft;
@@ -47,12 +47,12 @@ public class QuestionBox : MonoBehaviour
 
     private void HitBox()
     {
-        if (isEmpty)
+        /*if (isEmpty)
         {
             // Play empty box animation and sound
             PlayEmptyBoxFeedback();
             return;
-        }
+        }*/
 
         // Spawn coin
         SpawnCoin();
@@ -126,34 +126,6 @@ public class QuestionBox : MonoBehaviour
             timer += Time.deltaTime;
             float progress = timer / (hitAnimationDuration / 2);
             transform.position = Vector3.Lerp(bumpPosition, originalPosition, progress);
-            yield return null;
-        }
-
-        transform.position = originalPosition;
-    }
-
-    private void PlayEmptyBoxFeedback()
-    {
-        // Play empty sound
-        if (audioSource != null && emptyBoxSound != null)
-        {
-            audioSource.PlayOneShot(emptyBoxSound);
-        }
-
-        // Small shake animation
-        StartCoroutine(ShakeAnimation());
-    }
-
-    private System.Collections.IEnumerator ShakeAnimation()
-    {
-        Vector3 originalPosition = transform.position;
-        float timer = 0f;
-
-        while (timer < 0.2f)
-        {
-            timer += Time.deltaTime;
-            float offsetX = Random.Range(-0.1f, 0.1f);
-            transform.position = originalPosition + Vector3.right * offsetX;
             yield return null;
         }
 
