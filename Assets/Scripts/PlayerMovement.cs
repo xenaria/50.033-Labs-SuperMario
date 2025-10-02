@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     // state
     [System.NonSerialized]
     public bool alive = true;
+    public static System.Action OnGameRestart;
 
     // Start is called before the first frame update
     void Start()
@@ -167,7 +168,7 @@ public class PlayerMovement : MonoBehaviour
         // reset animation
         marioAnimator.SetTrigger("gameRestart");
         alive = true;
-
+        OnGameRestart?.Invoke();
     }
 
     void PlayJumpSound()
