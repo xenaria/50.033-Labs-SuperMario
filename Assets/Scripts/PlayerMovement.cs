@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     // state
     [System.NonSerialized]
     public bool alive = true;
+    public Transform gameCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -95,11 +96,11 @@ public class PlayerMovement : MonoBehaviour
             }
 
             // stop mario when A and D keys are lifted up
-            /*if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
+            if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
             {
                 // stop
                 marioBody.linearVelocity = Vector2.zero;
-            }*/
+            }
 
             // Handle jump using stored input
             if (jumpInput)
@@ -153,8 +154,18 @@ public class PlayerMovement : MonoBehaviour
         // reset sprite direction
         faceRightState = true;
         marioSprite.flipX = false;
+
+        // reset Mario velocity to 0 to avoid randomly jumping
+        marioBody.linearVelocity = Vector3.zero;
+        // reset states
+        jumpInput = false;
+        onGroundState = true;
+        marioAnimator.SetBool("onGround", true);
+        marioAnimator.SetFloat("xSpeed", 0f);
+
         // reset score
         scoreText.text = "Score: 0";
+        
         // reset Goomba
         foreach (Transform eachChild in enemies.transform)
         {
@@ -167,6 +178,8 @@ public class PlayerMovement : MonoBehaviour
         // reset animation
         marioAnimator.SetTrigger("gameRestart");
         alive = true;
+        // reset camera position
+        gameCamera.position = new Vector3(0, 0, -10);
 
     }
 
