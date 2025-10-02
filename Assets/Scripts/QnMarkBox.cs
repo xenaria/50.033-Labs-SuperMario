@@ -9,31 +9,49 @@ public class QuestionBox : MonoBehaviour
 
     [Header("Animation")]
     [SerializeField] private Animator boxAnimator;
-    [SerializeField] private float hitAnimationDuration = 0.5f;
+    [SerializeField] bool isHit = false;
 
     [Header("Audio")]
-    [SerializeField] private AudioSource audioSource;
+    public AudioSource boxAudio;
     [SerializeField] private AudioClip coinSound;
-    //[SerializeField] private AudioClip emptyBoxSound;
 
-    private bool isEmpty = false;
+    
+    [Header("Bounce Settings")]
+    [SerializeField] private float bounceHeight = 0.2f;
+    [SerializeField] private float bounceDuration = 0.3f;
+
+    [Header("Sprite Settings")]
+    [SerializeField] private GameObject questionBoxSprite; 
+    [SerializeField] private Sprite emptyBoxSprite; 
+    private SpriteRenderer QnBoxSprite;
+
     private int coinsLeft;
+    private Vector3 originalPosition;
 
     void Start()
     {
         coinsLeft = coinsToSpawn;
+        originalPosition = transform.position;
 
         // Get components if not assigned
         if (boxAnimator == null)
             boxAnimator = GetComponent<Animator>();
-        if (audioSource == null)
-            audioSource = GetComponent<AudioSource>();
+        if (boxAudio == null)
+            boxAudio = GetComponent<AudioSource>();
+
+        QnBoxSprite = GetComponent<SpriteRenderer>();
+        PlayerMovement.OnGameRestart += ResetBox;
+    }
+    void OnDestroy()
+    {
+        // Unsubscribe to prevent memory leaks
+        PlayerMovement.OnGameRestart -= ResetBox;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if hit from below by player
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !isHit)
         {
             Vector2 hitDirection = collision.contacts[0].normal;
 
@@ -47,31 +65,60 @@ public class QuestionBox : MonoBehaviour
 
     private void HitBox()
     {
-        /*if (isEmpty)
+        boxAudio.PlayOneShot(boxAudio.clip);
+
+        if (!isHit)
         {
-            // Play empty box animation and sound
-            PlayEmptyBoxFeedback();
-            return;
-        }*/
-
-        // Spawn coin
-        SpawnCoin();
-
-        // Play hit animation
-        PlayHitAnimation();
-
-        // Update state
-        coinsLeft--;
-        if (coinsLeft <= 0)
-        {
-            isEmpty = true;
-            // Change to empty box sprite/animation
-            boxAnimator.SetBool("isEmpty", true);
+            isHit = true;
+            StartCoroutine(BounceBox());
         }
+        if (coinsLeft > 0)
+        {
+            SpawnCoin();
+            coinsLeft = 0;
+            if (boxAnimator != null)
+            {
+                boxAnimator.enabled = false;
+            }       
+            if (emptyBoxSprite != null && QnBoxSprite != null)
+            {
+                QnBoxSprite.sprite = emptyBoxSprite;
+                Debug.Log("Changed to brown box sprite");
+            }                       
+        }
+    }
+
+
+    private System.Collections.IEnumerator BounceBox()
+    {
+        float elapsedTime = 0f;
+        Vector3 startPos = originalPosition;
+        Vector3 bouncePos = originalPosition + Vector3.up * bounceHeight;
+
+        // Move up
+        while (elapsedTime < bounceDuration / 2)
+        {
+            transform.position = Vector3.Lerp(startPos, bouncePos, elapsedTime / (bounceDuration / 2));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        elapsedTime = 0f;
+
+        // Move back down
+        while (elapsedTime < bounceDuration / 2)
+        {
+            transform.position = Vector3.Lerp(bouncePos, startPos, elapsedTime / (bounceDuration / 2));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = originalPosition;
     }
 
     private void SpawnCoin()
     {
+
         if (coinPrefab != null)
         {
             // Spawn coin above the box
@@ -85,50 +132,24 @@ public class QuestionBox : MonoBehaviour
                 coinRb.AddForce(Vector2.up * coinSpawnForce, ForceMode2D.Impulse);
             }
 
-            // Play coin sound
-            if (audioSource != null && coinSound != null)
+            if (boxAudio != null && coinSound != null)
             {
-                audioSource.PlayOneShot(coinSound);
+                boxAudio.PlayOneShot(coinSound);
             }
         }
     }
 
-    private void PlayHitAnimation()
+    public void ResetBox()
     {
-        // Trigger hit animation
-        boxAnimator.SetTrigger("onHit");
-
-        // Small upward bump animation
-        StartCoroutine(BumpAnimation());
-    }
-
-    private System.Collections.IEnumerator BumpAnimation()
-    {
-        Vector3 originalPosition = transform.position;
-        Vector3 bumpPosition = originalPosition + Vector3.up * 0.2f;
-
-        float timer = 0f;
-
-        // Move up
-        while (timer < hitAnimationDuration / 2)
-        {
-            timer += Time.deltaTime;
-            float progress = timer / (hitAnimationDuration / 2);
-            transform.position = Vector3.Lerp(originalPosition, bumpPosition, progress);
-            yield return null;
-        }
-
-        timer = 0f;
-
-        // Move back down
-        while (timer < hitAnimationDuration / 2)
-        {
-            timer += Time.deltaTime;
-            float progress = timer / (hitAnimationDuration / 2);
-            transform.position = Vector3.Lerp(bumpPosition, originalPosition, progress);
-            yield return null;
-        }
-
+        isHit = false;
+        coinsLeft = coinsToSpawn;
         transform.position = originalPosition;
+        
+        // Reset animator state
+        if (boxAnimator != null)
+        {
+            boxAnimator.enabled = true;
+        }
+
     }
 }

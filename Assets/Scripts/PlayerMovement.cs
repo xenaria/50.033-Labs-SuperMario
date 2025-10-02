@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     // state
     [System.NonSerialized]
     public bool alive = true;
+    public static System.Action OnGameRestart;
     public Transform gameCamera;
 
     // Start is called before the first frame update
@@ -178,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
         // reset animation
         marioAnimator.SetTrigger("gameRestart");
         alive = true;
-        // reset camera position
+        OnGameRestart?.Invoke();        // reset camera position
         gameCamera.position = new Vector3(0, 0, -10);
 
     }
