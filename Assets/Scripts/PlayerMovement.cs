@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     public TextMeshProUGUI finalScore;
     public Animator marioAnimator;
     public AudioSource marioAudio;
-    private bool jumpInput;
     public AudioClip marioDeath;
     public float deathImpulse = 15;
     int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
@@ -46,27 +45,27 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.linearVelocity.x));
+    }
 
-        if (Input.GetKeyDown("space") && onGroundState)
-            jumpInput = true;
-
-        // toggle state to flip mario
-        if (Input.GetKeyDown("a") && faceRightState)
+    void FlipMarioSprite(int value)
+    {
+        if (value == -1 && faceRightState)
         {
             faceRightState = false;
             marioSprite.flipX = true;
-            if (marioBody.linearVelocity.x > 0.1f)
+            if (marioBody.linearVelocity.x > 0.05f)
                 marioAnimator.SetTrigger("onSkid");
+
         }
 
-        if (Input.GetKeyDown("d") && !faceRightState)
+        else if (value == 1 && !faceRightState)
         {
             faceRightState = true;
             marioSprite.flipX = false;
-            if (marioBody.linearVelocity.x < -0.1f)
+            if (marioBody.linearVelocity.x < -0.05f)
                 marioAnimator.SetTrigger("onSkid");
         }
-        marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.linearVelocity.x));
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -80,41 +79,67 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-
+    private bool moving = false;
     // FixedUpdate is called 50 times a second
     void FixedUpdate()
     {
-        if (alive)
+        if (alive && moving)
         {
-            float moveHorizontal = Input.GetAxisRaw("Horizontal");
+            Move(faceRightState == true ? 1 : -1);
+        }
+    }
 
-            if (Mathf.Abs(moveHorizontal) > 0)
-            {
-                Vector2 movement = new Vector2(moveHorizontal, 0);
-                // check if it doesn't go beyond maxSpeed
-                if (marioBody.linearVelocity.magnitude < maxSpeed)
-                    marioBody.AddForce(movement * speed);
-            }
+    void Move(int value)
+    {
 
-            // stop mario when A and D keys are lifted up
-            if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
-            {
-                // stop
-                marioBody.linearVelocity = Vector2.zero;
-            }
+        Vector2 movement = new Vector2(value, 0);
+        // check if it doesn't go beyond maxSpeed
+        if (marioBody.linearVelocity.magnitude < maxSpeed)
+            marioBody.AddForce(movement * speed);
+    }
 
-            // Handle jump using stored input
-            if (jumpInput)
-            {
-                marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
-                onGroundState = false;
-                // update animator state
-                marioAnimator.SetBool("onGround", onGroundState);
-                jumpInput = false; // Reset the flag
-            }
+    public void MoveCheck(int value)
+    {
+        if (value == 0)
+        {
+            moving = false;
+        }
+        else
+        {
+            FlipMarioSprite(value);
+            moving = true;
+            Move(value);
+        }
+    }
+
+    private bool jumpedState = false;
+
+    public void Jump()
+    {
+        if (alive && onGroundState)
+        {
+            // jump
+            marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
+            onGroundState = false;
+            jumpedState = true;
+            // update animator state
+            marioAnimator.SetBool("onGround", onGroundState);
 
         }
     }
+
+    public void JumpHold()
+    {
+        if (alive && jumpedState)
+        {
+            // jump higher
+            marioBody.AddForce(Vector2.up * upSpeed * 30, ForceMode2D.Force);
+            jumpedState = false;
+
+        }
+    }
+
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -159,7 +184,6 @@ public class PlayerMovement : MonoBehaviour
         // reset Mario velocity to 0 to avoid randomly jumping
         marioBody.linearVelocity = Vector3.zero;
         // reset states
-        jumpInput = false;
         onGroundState = true;
         marioAnimator.SetBool("onGround", true);
         marioAnimator.SetFloat("xSpeed", 0f);
