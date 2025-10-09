@@ -208,8 +208,9 @@ MonoBehaviour:
   coinSound: {fileID: 8300000, guid: d885ffc842af744d89f7d595ffcc176a, type: 3}
   bounceHeight: 0.2
   bounceDuration: 0.3
-  questionBoxSprite: {fileID: 4983318882598449216}
+  questionBoxSprite: {fileID: 0}
   emptyBoxSprite: {fileID: 21300060, guid: 82bc45c4496284f4c823d1b837f65ec4, type: 3}
+  gameManager: {fileID: 0}
 --- !u!82 &6714480745961028359
 AudioSource:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class SpawnCoin : MonoBehaviour
     public float coinSpawnForce = 10f;
     private int coinsLeft;
     private Vector3 originalPosition;
+    public GameManager gameManager;
 
     [Header("Audio")]
     public AudioClip coinSound;
@@ -41,8 +42,9 @@ public class SpawnCoin : MonoBehaviour
 
         if (coinsLeft > 0)
             {
-                SpawnCoinAnimation();
-                coinsLeft = 0;
+            SpawnCoinAnimation();
+            gameManager.IncreaseScore(1);
+                coinsLeft -= 1;
             }
     }
 

@@ -19,9 +19,10 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer marioSprite;
     private bool faceRightState = true;
     public TextMeshProUGUI scoreText;
+    
     public GameObject enemies;
-    public JumpOverGoomba jumpOverGoomba;
-    public GameObject gameOverScreen;
+    public GameObject gameManager;
+
     public TextMeshProUGUI finalScore;
     public Animator marioAnimator;
     public AudioSource marioAudio;
@@ -185,12 +186,7 @@ public class PlayerMovement : MonoBehaviour
                 // stomp the enemy
                 enemy.Stomp();
 
-                // increase score and update UI
-                if (jumpOverGoomba != null)
-                {
-                    jumpOverGoomba.score += 1;
-                    if (scoreText != null) scoreText.text = "Score: " + jumpOverGoomba.score;
-                }
+                
             }
             else if (alive)
             {
@@ -199,29 +195,25 @@ public class PlayerMovement : MonoBehaviour
                 if (marioAnimator != null) marioAnimator.Play("mario-die");
                 if (marioDeath != null && marioDeath.clip != null) marioDeath.PlayOneShot(marioDeath.clip);
                 alive = false;
-                ShowGameOverScreen();
+                Time.timeScale = 0.0f;
+            //ShowGameOverScreen();
             }
         }
     }
-    
+
+
     
     /*** Game Restart ***/
-    public void ShowGameOverScreen()
-    {
-        Time.timeScale = 0.0f;
-        gameOverScreen.SetActive(true);
-        finalScore.text = "Score: " + jumpOverGoomba.score;
-    }
-
     public void RestartButtonCallback(int input)
     {
         // reset everything
-        ResetGame();
+        GameRestart();
         // resume time
         Time.timeScale = 1.0f;
     }
     
-    private void ResetGame()
+
+    public void GameRestart()
     {
         // reset position
         marioBody.transform.position = new Vector3(-8.0f, -5.71f, 0.0f);
@@ -251,13 +243,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // reset score
-        jumpOverGoomba.score = 0;
+        
         // hide game over screen
-        gameOverScreen.SetActive(false);
+
         // reset animation
         marioAnimator.SetTrigger("gameRestart");
         alive = true;
-        OnGameRestart?.Invoke();        // reset camera position
+
+        // reset camera position
         gameCamera.position = new Vector3(0, 0, -10);
 
     }
