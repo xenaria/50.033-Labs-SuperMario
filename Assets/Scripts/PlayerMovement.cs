@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public TextMeshProUGUI finalScore;
     public Animator marioAnimator;
     public AudioSource marioAudio;
-    public AudioClip marioDeath;
+    public AudioSource marioDeath;
     public float deathImpulse = 15;
     int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
     // state
@@ -148,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Collided with goomba!");
             // play death animation
             marioAnimator.Play("mario-die");
-            marioAudio.PlayOneShot(marioDeath);
+            marioDeath.PlayOneShot(marioDeath.clip);
             // prevent collision with Goomba to be retriggered
             alive = false;
             ShowGameOverScreen();
