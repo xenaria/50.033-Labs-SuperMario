@@ -157,13 +157,40 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") && alive)
         {
-            Debug.Log("Collided with goomba!");
-            // play death animation
-            marioAnimator.Play("mario-die");
-            marioDeath.PlayOneShot(marioDeath.clip);
-            // prevent collision with Goomba to be retriggered
-            alive = false;
-            ShowGameOverScreen();
+            // detect stomp: Mario is moving downward AND above the enemy (tweak threshold as needed)
+            float yThreshold = 0.15f;
+            bool movingDown = marioBody != null && marioBody.linearVelocity.y < 0f;
+            bool above = transform.position.y > other.transform.position.y + yThreshold;
+
+            EnemyMovement enemy = other.GetComponent<EnemyMovement>();
+            if (enemy != null && movingDown && above)
+            {
+                // bounce Mario up a bit
+                if (marioBody != null)
+                {
+                    marioBody.linearVelocity = new Vector2(marioBody.linearVelocity.x, 0f);
+                    marioBody.AddForce(Vector2.up * (upSpeed * 0.6f), ForceMode2D.Impulse);
+                }
+
+                // stomp the enemy
+                enemy.Stomp();
+
+                // increase score and update UI
+                if (jumpOverGoomba != null)
+                {
+                    jumpOverGoomba.score += 1;
+                    if (scoreText != null) scoreText.text = "Score: " + jumpOverGoomba.score;
+                }
+            }
+            else if (alive)
+            {
+                // not a stomp -> Mario dies
+                Debug.Log("Collided with goomba!");
+                if (marioAnimator != null) marioAnimator.Play("mario-die");
+                if (marioDeath != null && marioDeath.clip != null) marioDeath.PlayOneShot(marioDeath.clip);
+                alive = false;
+                ShowGameOverScreen();
+            }
         }
     }
     
@@ -224,10 +251,10 @@ public class PlayerMovement : MonoBehaviour
     {
         marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
     }
+
     void PlayJumpSound()
     {
         // play jump sound
         marioAudio.PlayOneShot(marioAudio.clip);
     }
-
 }
