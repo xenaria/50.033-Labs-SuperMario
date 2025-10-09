@@ -182,7 +182,7 @@ MonoBehaviour:
   stompBounce: 6
   stompDestroyDelay: 0.6
   stompClip: {fileID: 8300000, guid: d84415726495b4d46b5a557ed2a97cfa, type: 3}
-  sfxSource: {fileID: 0}
+  sfxSource: {fileID: 3414648339262033979}
 --- !u!95 &4859453241947309607
 Animator:
   serializedVersion: 7
