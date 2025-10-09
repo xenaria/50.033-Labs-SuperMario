@@ -19,9 +19,10 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer marioSprite;
     private bool faceRightState = true;
     public TextMeshProUGUI scoreText;
+    
     public GameObject enemies;
-    public JumpOverGoomba jumpOverGoomba;
-    public GameObject gameOverScreen;
+    public GameObject gameManager;
+
     public TextMeshProUGUI finalScore;
     public Animator marioAnimator;
     public AudioSource marioAudio;
@@ -163,28 +164,35 @@ public class PlayerMovement : MonoBehaviour
             marioAudio.PlayOneShot(marioDeath);
             // prevent collision with Goomba to be retriggered
             alive = false;
-            ShowGameOverScreen();
+            Time.timeScale = 0.0f;
+            //ShowGameOverScreen();
         }
     }
-    
-    
-    /*** Game Restart ***/
-    public void ShowGameOverScreen()
+
+
+    /*** Animation and Sounds ***/
+    void PlayDeathImpulse()
     {
-        Time.timeScale = 0.0f;
-        gameOverScreen.SetActive(true);
-        finalScore.text = "Score: " + jumpOverGoomba.score;
+        marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
+    }
+    void PlayJumpSound()
+    {
+        // play jump sound
+        marioAudio.PlayOneShot(marioAudio.clip);
     }
 
+    
+    /*** Game Restart ***/
     public void RestartButtonCallback(int input)
     {
         // reset everything
-        ResetGame();
+        GameRestart();
         // resume time
         Time.timeScale = 1.0f;
     }
     
-    private void ResetGame()
+
+    public void GameRestart()
     {
         // reset position
         marioBody.transform.position = new Vector3(-8.0f, -5.71f, 0.0f);
@@ -199,35 +207,11 @@ public class PlayerMovement : MonoBehaviour
         marioAnimator.SetBool("onGround", true);
         marioAnimator.SetFloat("xSpeed", 0f);
 
-        // reset score
-        scoreText.text = "Score: 0";
-        
-        // reset Goomba
-        foreach (Transform eachChild in enemies.transform)
-        {
-            eachChild.transform.localPosition = eachChild.GetComponent<EnemyMovement>().startPosition;
-        }
-        // reset score
-        jumpOverGoomba.score = 0;
-        // hide game over screen
-        gameOverScreen.SetActive(false);
         // reset animation
         marioAnimator.SetTrigger("gameRestart");
         alive = true;
-        OnGameRestart?.Invoke();        // reset camera position
+
+        // reset camera position
         gameCamera.position = new Vector3(0, 0, -10);
-
     }
-
-    /*** Animation and Sounds ***/
-    void PlayDeathImpulse()
-    {
-        marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
-    }
-    void PlayJumpSound()
-    {
-        // play jump sound
-        marioAudio.PlayOneShot(marioAudio.clip);
-    }
-
 }
