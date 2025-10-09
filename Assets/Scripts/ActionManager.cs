@@ -9,6 +9,8 @@ public class ActionManager : MonoBehaviour
     public UnityEvent jumpHold;
     public UnityEvent<int> moveCheck;
 
+    /*** Keyboard Callbacks ***/
+
     public void OnJumpHoldAction(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -45,7 +47,7 @@ public class ActionManager : MonoBehaviour
         if (context.started)
         {
             Debug.Log("move started");
-            float move = context.ReadValue<float>(); 
+            float move = context.ReadValue<float>();
             Debug.Log($"move value: {move}");
             int faceRight = context.ReadValue<float>() > 0 ? 1 : -1;
             moveCheck.Invoke(faceRight);
@@ -57,4 +59,29 @@ public class ActionManager : MonoBehaviour
         }
 
     }
+    
+    /*** Mouse Callbacks ***/
+
+    public void OnClickAction(InputAction.CallbackContext context)
+    {
+        if (context.started)
+            Debug.Log("mouse click started");
+        else if (context.performed)
+        {
+            Debug.Log("mouse click performed");
+        }
+        else if (context.canceled)
+            Debug.Log("mouse click cancelled");
+    }
+
+    public void OnPointAction(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Vector2 point = context.ReadValue<Vector2>();
+            Debug.Log($"Point detected: {point}");
+
+        }
+    }
+
 }
