@@ -241,13 +241,12 @@ public class PlayerMovement : MonoBehaviour
 
 
         // reset Goomba states (don't destroy/respawn)
-        if (enemies != null)
+        foreach (Transform eachChild in enemies.transform)
         {
-            foreach (Transform child in enemies.transform)
+            EnemyMovement em = eachChild.GetComponent<EnemyMovement>();
+            if (em != null)
             {
-                child.gameObject.SetActive(true);
-                var em = child.GetComponent<EnemyMovement>();
-                if (em != null) em.ResetState();
+                em.ResetState(); // Just reset state, don't destroy
             }
         }
 

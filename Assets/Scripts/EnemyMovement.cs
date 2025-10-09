@@ -28,8 +28,8 @@ public class EnemyMovement : MonoBehaviour
         enemyCollider = GetComponent<Collider2D>();
         if (animator == null) animator = GetComponent<Animator>();
         originalX = transform.position.x;
-        ComputeVelocity();
         startPosition = transform.position;
+        ComputeVelocity();
     }
     void ComputeVelocity()
     {
@@ -81,13 +81,19 @@ public class EnemyMovement : MonoBehaviour
         if (enemyBody != null)
         {
             enemyBody.linearVelocity = Vector2.zero;
-            enemyBody.AddForce(Vector2.up * stompBounce, ForceMode2D.Impulse);
-            enemyBody.bodyType = RigidbodyType2D.Kinematic;
+            // Keep as Kinematic - no change needed if already Kinematic
         }
 
         if (animator != null) animator.SetTrigger("stomp");
 
-        Destroy(gameObject, stompDestroyDelay);
+        // Instead of Destroy, just hide after delay
+        StartCoroutine(HideAfterDelay(stompDestroyDelay));
+    }
+
+    private IEnumerator HideAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        gameObject.SetActive(false); // Hide instead of destroy
     }
 
     void PlayJumpSound()
@@ -123,9 +129,12 @@ public class EnemyMovement : MonoBehaviour
         if (animator != null)
         {
             animator.ResetTrigger("stomp");
-            animator.Play(0);
+            animator.Play("goomba-idle",0,0);
         }
-
+        // reset patrol variables
+        originalX = startPosition.x;
+        moveRight = -1;
+        ComputeVelocity();
         // ensure object is active
         gameObject.SetActive(true);
     }
