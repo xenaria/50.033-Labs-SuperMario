@@ -45,6 +45,8 @@ public class ActionManager : MonoBehaviour
         if (context.started)
         {
             Debug.Log("move started");
+            float move = context.ReadValue<float>(); 
+            Debug.Log($"move value: {move}");
             int faceRight = context.ReadValue<float>() > 0 ? 1 : -1;
             moveCheck.Invoke(faceRight);
         }
