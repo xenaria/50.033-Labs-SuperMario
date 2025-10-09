@@ -18,12 +18,10 @@ public class PlayerMovement : MonoBehaviour
     public float upSpeed = 10;
     private SpriteRenderer marioSprite;
     private bool faceRightState = true;
-    public TextMeshProUGUI scoreText;
 
     public GameObject enemies;
     public GameObject gameManager;
 
-    public TextMeshProUGUI finalScore;
     public Animator marioAnimator;
     public AudioSource marioAudio;
     public AudioSource marioDeath;

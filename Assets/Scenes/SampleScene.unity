@@ -1299,10 +1299,8 @@ MonoBehaviour:
   speed: 150
   maxSpeed: 5
   upSpeed: 30
-  scoreText: {fileID: 1799672490}
   enemies: {fileID: 397760295}
   gameManager: {fileID: 1519136930}
-  finalScore: {fileID: 473203271}
   marioAnimator: {fileID: 501446009}
   marioAudio: {fileID: 501446010}
   marioDeath: {fileID: 431817726}
@@ -1962,6 +1960,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4588015439731408522, guid: 9bb3a97af87cead46bd05b07b4ba9324, type: 3}
       insertIndex: -1
       addedObject: {fileID: 563543024}
+    - targetCorrespondingSourceObject: {fileID: 4588015439731408522, guid: 9bb3a97af87cead46bd05b07b4ba9324, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 563543027}
   m_SourcePrefab: {fileID: 100100000, guid: 9bb3a97af87cead46bd05b07b4ba9324, type: 3}
 --- !u!4 &563543022 stripped
 Transform:
@@ -1987,6 +1988,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounceHeight: 0.2
   bounceDuration: 0.3
+--- !u!114 &563543027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563543023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b069bacdbb4533d4ab03f8e964efab2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 4544314050419154362, guid: ae6dadd6bc2218141b5d1a1944ad8bc6, type: 3}
+  coinsToSpawn: 1
+  coinSpawnForce: 10
+  gameManager: {fileID: 1519136932}
+  coinSound: {fileID: 0}
+  boxAudio: {fileID: 0}
 --- !u!1 &570028199
 GameObject:
   m_ObjectHideFlags: 0
