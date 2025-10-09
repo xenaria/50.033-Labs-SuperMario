@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     private bool moving = false;
     private bool jumpedState = false;
 
+    public GameObject goombaPrefab;
+    private List<Vector3> enemySpawnPositions = new List<Vector3>();
     /*** Unity Callbacks ***/
 
     // Start is called before the first frame update
@@ -47,6 +49,14 @@ public class PlayerMovement : MonoBehaviour
         marioSprite = GetComponent<SpriteRenderer>();
         // update animator state
         marioAnimator.SetBool("onGround", onGroundState);
+
+        enemySpawnPositions.Clear();
+        if (enemies != null)
+        {
+            foreach (Transform t in enemies.transform)
+                enemySpawnPositions.Add(t.position);
+        }
+
     }
 
     // Update is called once per frame
@@ -228,12 +238,19 @@ public class PlayerMovement : MonoBehaviour
 
         // reset score
         scoreText.text = "Score: 0";
-        
-        // reset Goomba
-        foreach (Transform eachChild in enemies.transform)
+
+
+        // reset Goomba states (don't destroy/respawn)
+        if (enemies != null)
         {
-            eachChild.transform.localPosition = eachChild.GetComponent<EnemyMovement>().startPosition;
+            foreach (Transform child in enemies.transform)
+            {
+                child.gameObject.SetActive(true);
+                var em = child.GetComponent<EnemyMovement>();
+                if (em != null) em.ResetState();
+            }
         }
+
         // reset score
         jumpOverGoomba.score = 0;
         // hide game over screen

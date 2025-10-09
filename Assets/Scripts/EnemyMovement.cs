@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     private Collider2D enemyCollider;
     private bool alive = true;
 
-    public AudioClip stompClip;               
+    public AudioClip stompClip;
     public AudioSource sfxSource;
     void Start()
     {
@@ -29,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
         if (animator == null) animator = GetComponent<Animator>();
         originalX = transform.position.x;
         ComputeVelocity();
-        startPosition = transform.localPosition;
+        startPosition = transform.position;
     }
     void ComputeVelocity()
     {
@@ -70,9 +70,9 @@ public class EnemyMovement : MonoBehaviour
     public void Stomp()
     {
         if (sfxSource != null && stompClip != null)
-            {
-                sfxSource.PlayOneShot(stompClip);
-            }
+        {
+            sfxSource.PlayOneShot(stompClip);
+        }
         if (!alive) return;
         alive = false;
 
@@ -90,17 +90,27 @@ public class EnemyMovement : MonoBehaviour
         Destroy(gameObject, stompDestroyDelay);
     }
 
+    void PlayJumpSound()
+    {
+        // play jump sound
+        if (sfxSource != null && stompClip != null) sfxSource.PlayOneShot(stompClip);
+    }
+
     public void ResetState()
     {
-        // restore flags
+        // restore flag
         alive = true;
 
-        // restore collider
+        // ensure references
         if (enemyCollider == null) enemyCollider = GetComponent<Collider2D>();
-        if (enemyCollider != null) enemyCollider.enabled = true;
-
-        // restore rigidbody state
         if (enemyBody == null) enemyBody = GetComponent<Rigidbody2D>();
+        if (animator == null) animator = GetComponent<Animator>();
+
+        // restore transform & saved start position
+        transform.position = startPosition;
+        transform.localScale = Vector3.one;
+
+        // restore physics
         if (enemyBody != null)
         {
             enemyBody.bodyType = RigidbodyType2D.Dynamic;
@@ -108,24 +118,15 @@ public class EnemyMovement : MonoBehaviour
             enemyBody.angularVelocity = 0f;
         }
 
-        // reset transform & visual
-        transform.localPosition = startPosition;
-        transform.localScale = Vector3.one;
-
-        // reset animator (go back to walk/idle state)
-        if (animator == null) animator = GetComponent<Animator>();
+        // restore collider and animator
+        if (enemyCollider != null) enemyCollider.enabled = true;
         if (animator != null)
         {
             animator.ResetTrigger("stomp");
-            animator.Play(0); // play base layer default state
+            animator.Play(0);
         }
 
-        // cancel pending destroy (in case it was scheduled) by re-enabling object
+        // ensure object is active
         gameObject.SetActive(true);
-    }
-    void PlayJumpSound()
-    {
-        // play jump sound
-        sfxSource.PlayOneShot(stompClip);
     }
 }
