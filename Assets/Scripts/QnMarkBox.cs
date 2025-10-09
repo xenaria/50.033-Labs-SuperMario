@@ -28,6 +28,8 @@ public class QuestionBox : MonoBehaviour
     private int coinsLeft;
     private Vector3 originalPosition;
 
+    public GameManager gameManager;
+
     void Start()
     {
         coinsLeft = coinsToSpawn;
@@ -75,7 +77,8 @@ public class QuestionBox : MonoBehaviour
         if (coinsLeft > 0)
         {
             SpawnCoin();
-            coinsLeft = 0;
+            gameManager.IncreaseScore(1);
+            coinsLeft -= 1;
             if (boxAnimator != null)
             {
                 boxAnimator.enabled = false;

@@ -149,6 +149,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 4544314050419154362, guid: ae6dadd6bc2218141b5d1a1944ad8bc6, type: 3}
   coinsToSpawn: 1
   coinSpawnForce: 10
+  gameManager: {fileID: 1519136932}
   coinSound: {fileID: 8300000, guid: d885ffc842af744d89f7d595ffcc176a, type: 3}
   boxAudio: {fileID: 17082387}
 --- !u!82 &17082387
@@ -394,6 +395,10 @@ PrefabInstance:
       value: Question-Box-2
       objectReference: {fileID: 0}
     - target: {fileID: 6168744489671414353, guid: 0ef3a3412c0539b40ba93704886f5436, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1519136932}
+    - target: {fileID: 6168744489671414353, guid: 0ef3a3412c0539b40ba93704886f5436, type: 3}
       propertyPath: emptyBoxSprite
       value: 
       objectReference: {fileID: 21300060, guid: 82bc45c4496284f4c823d1b837f65ec4, type: 3}
@@ -463,6 +468,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Question-Box-3
       objectReference: {fileID: 0}
+    - target: {fileID: 6168744489671414353, guid: 0ef3a3412c0539b40ba93704886f5436, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1519136932}
     - target: {fileID: 6168744489671414353, guid: 0ef3a3412c0539b40ba93704886f5436, type: 3}
       propertyPath: emptyBoxSprite
       value: 
@@ -2902,6 +2911,10 @@ PrefabInstance:
       value: Question-Box-4
       objectReference: {fileID: 0}
     - target: {fileID: 6168744489671414353, guid: 0ef3a3412c0539b40ba93704886f5436, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1519136932}
+    - target: {fileID: 6168744489671414353, guid: 0ef3a3412c0539b40ba93704886f5436, type: 3}
       propertyPath: emptyBoxSprite
       value: 
       objectReference: {fileID: 21300060, guid: 82bc45c4496284f4c823d1b837f65ec4, type: 3}
@@ -4685,9 +4698,9 @@ PrefabInstance:
       value: Question-Box-1
       objectReference: {fileID: 0}
     - target: {fileID: 6168744489671414353, guid: 0ef3a3412c0539b40ba93704886f5436, type: 3}
-      propertyPath: boxAudio
+      propertyPath: gameManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1519136932}
     - target: {fileID: 6168744489671414353, guid: 0ef3a3412c0539b40ba93704886f5436, type: 3}
       propertyPath: emptyBoxSprite
       value: 
