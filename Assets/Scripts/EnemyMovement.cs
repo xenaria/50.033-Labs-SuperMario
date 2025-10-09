@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
     public float stompDestroyDelay = 0.6f;
     private Collider2D enemyCollider;
     private bool alive = true;
-
+    public GameManager gameManager;
     public AudioClip stompClip;
     public AudioSource sfxSource;
     void Start()
@@ -86,6 +86,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (animator != null) animator.SetTrigger("stomp");
 
+        gameManager.SetScore(1);
         // Instead of Destroy, just hide after delay
         StartCoroutine(HideAfterDelay(stompDestroyDelay));
     }
