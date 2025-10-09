@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8165796315209456831}
   - component: {fileID: 8403819544922297706}
   - component: {fileID: 6168744489671414353}
-  - component: {fileID: 8408978024198217266}
+  - component: {fileID: 6714480745961028359}
   m_Layer: 7
   m_Name: Question-Box-1
   m_TagString: Untagged
@@ -204,9 +204,13 @@ MonoBehaviour:
   coinSpawnForce: 10
   boxAnimator: {fileID: 8165796315209456831}
   isHit: 0
-  boxAudio: {fileID: 8408978024198217266}
+  boxAudio: {fileID: 0}
   coinSound: {fileID: 8300000, guid: d885ffc842af744d89f7d595ffcc176a, type: 3}
---- !u!82 &8408978024198217266
+  bounceHeight: 0.2
+  bounceDuration: 0.3
+  questionBoxSprite: {fileID: 4983318882598449216}
+  emptyBoxSprite: {fileID: 21300060, guid: 82bc45c4496284f4c823d1b837f65ec4, type: 3}
+--- !u!82 &6714480745961028359
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,7 +222,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 7988561719a0c40049ae5a3c2870d1e7, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

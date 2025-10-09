@@ -19,14 +19,14 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer marioSprite;
     private bool faceRightState = true;
     public TextMeshProUGUI scoreText;
-    
+
     public GameObject enemies;
     public GameObject gameManager;
 
     public TextMeshProUGUI finalScore;
     public Animator marioAnimator;
     public AudioSource marioAudio;
-    public AudioClip marioDeath;
+    public AudioSource marioDeath;
     public float deathImpulse = 15;
     int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
     // state
@@ -159,13 +159,40 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && alive)
         {
             Debug.Log("Collided with goomba!");
+
             // play death animation
             marioAnimator.Play("mario-die");
-            marioAudio.PlayOneShot(marioDeath);
+            // marioAudio.PlayOneShot(marioDeath);
+
             // prevent collision with Goomba to be retriggered
             alive = false;
             Time.timeScale = 0.0f;
             //ShowGameOverScreen();
+            // detect stomp: Mario is moving downward AND above the enemy (tweak threshold as needed)
+            float yThreshold = 0.15f;
+            bool movingDown = marioBody != null && marioBody.linearVelocity.y < 0f;
+            bool above = transform.position.y > other.transform.position.y + yThreshold;
+
+            EnemyMovement enemy = other.GetComponent<EnemyMovement>();
+            if (enemy != null && movingDown && above)
+            {
+                // bounce Mario up a bit
+                if (marioBody != null)
+                {
+                    marioBody.linearVelocity = new Vector2(marioBody.linearVelocity.x, 0f);
+                    marioBody.AddForce(Vector2.up * (upSpeed * 0.6f), ForceMode2D.Impulse);
+                }
+
+                // stomp the enemy
+                enemy.Stomp();
+            }
+            else if (alive)
+            {                // not a stomp -> Mario dies
+                Debug.Log("Collided with goomba!");
+                if (marioAnimator != null) marioAnimator.Play("mario-die");
+                if (marioDeath != null && marioDeath.clip != null) marioDeath.PlayOneShot(marioDeath.clip);
+                alive = false;
+            }
         }
     }
 
